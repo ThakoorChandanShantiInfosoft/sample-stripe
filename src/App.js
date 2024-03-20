@@ -1,24 +1,15 @@
-import logo from './logo.svg';
-import './App.css';
+import { Elements } from '@stripe/react-stripe-js';
+import { loadStripe } from '@stripe/stripe-js';
+import PaymentComponent from './PaymentComponent';
+
+// Replace with your Stripe public key
+const stripePromise = loadStripe('pk_test_51OvzlHBI5QUh06IFh10ejKcztjYKweJ5ubUlW4pYC0Rntn97BpfJBkqM3aXilIOcomGr9tmJxUWtO6cdBdPSj38w00zpERHfkI');
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Elements stripe={stripePromise}>
+      <PaymentComponent />
+    </Elements>
   );
 }
 
